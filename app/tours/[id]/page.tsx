@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { tours } from "@/app/lib/tours";
 
-export default async function TourDetail({ params }: { params: Promise<{ id: string }> }) {
+type Props = {
+    params: { id: string};
+}
+
+export default async function TourDetail({ params }: Props ) {
   const { id } = await params;
   const tour = tours.find(t => t.id === id);
   if (!tour) return <main style={{ padding: 16 }}>Not Found</main>;
